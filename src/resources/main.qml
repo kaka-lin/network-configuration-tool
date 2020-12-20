@@ -12,7 +12,7 @@ ApplicationWindow {
     visible: true
     minimumWidth: 640
     minimumHeight: 480
-    //visibility: Window.FullScreen
+    visibility: Window.FullScreen
 
     title: qsTr("Network Configutation Tool")
 

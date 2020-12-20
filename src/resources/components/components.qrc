@@ -1,5 +1,7 @@
 <!DOCTYPE RCC><RCC version="1.0">
-    <qresource prefix="/resources/components">
+    <qresource prefix="/components">
+        <file>IpInfo.qml</file>
+        <file>qmldir</file>
         <file>common/Clock.qml</file>
         <file>common/qmldir</file>
     </qresource>

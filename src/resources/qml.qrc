@@ -1,5 +1,5 @@
 <!DOCTYPE RCC><RCC version="0.1">
-    <qresource prefix="/resources">
+    <qresource prefix="/">
         <file>main.qml</file>
 
         <file>tabs/Home.qml</file>
@@ -9,5 +9,7 @@
         <file>images/about.ico</file>
         <file>images/exit.ico</file>
         <file>images/newFile.ico</file>
+
+        <file>scripts/get_ip.sh</file>
     </qresource>
 </RCC>

@@ -1,5 +1,10 @@
 #!/bin/bash
 
-mkdir -p build && cd build
-cmake -G Ninja -DCMAKE_BUILD_TYPE=Debug ..
-cmake --build .
+source /etc/environment
+unset LD_LIBRARY_PATH
+
+mkdir -p src/resources/scripts
+cp -r scripts/* src/resources/scripts
+
+qmake
+make -j4

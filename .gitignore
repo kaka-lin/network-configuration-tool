@@ -10,3 +10,9 @@
 
 # cmake
 build/
+
+# qmake
+.qmake.stash
+obj/
+*.app
+Makefile
