@@ -7,47 +7,103 @@
 - Qt5.10+
 - CMake & Ninja
 
-## build (qmake)
+## Run in `Docker` (Optional)
 
-```bash
-$ chmod +x build.sh
+Detail information please reference [qt-template](https://github.com/kaka-lin/qt-template/blob/master/docker/README.md)
 
-$ ./build.sh
-```
+- Run it on `Ubuntu`
 
-## clean
+    ```bash
+    $ xhost +local:docker
 
-```bash
-$ chmod +x clean.sh
+    $ docker run --rm -it \
+    -e DISPLAY=$DISPLAY \
+    -e QT_X11_NO_MITSHM=1 \
+    --volume="/tmp:/tmp" \
+    --volume="/tmp/.X11-unix:/tmp/.X11-unix:rw" \
+    --volume="$PWD:/home/user/network-configuration-tool" \
+    --privileged \
+    kakalin/qt:5.12.0
+    ```
 
-$ ./clean.sh
-```
+- Run it on `macOS`
 
-## build (cmake)
+    You need to install [XQuartz](https://www.xquartz.org/)
 
-### Method 1
+    ```bash
+    $ open -a XQuartz
 
-```bash
-$ mkdir -p build && cd build
-$ cmake -G Ninja -DCMAKE_BUILD_TYPE=Debug ..
-$ cmake --build .
-```
+    $ xhost +localhost
 
-### Method 2
+    $ docker run --rm -it \
+    -e DISPLAY=host.docker.internal:0\
+    -e QT_X11_NO_MITSHM=1 \
+    --volume="/tmp:/tmp" \
+    --volume="/tmp/.X11-unix:/tmp/.X11-unix:rw" \
+    --volume="$PWD:/home/user/network-configuration-tool" \
+    --privileged \
+    kakalin/qt:5.12.0
 
-```bash
-$ chmod +x cmake-build.sh
+### Build and Run
 
-$ ./cmake-build.sh
-```
+Same as [Run in local machine](#run-in-local-machine)
 
-## clean
+## Run in local machine
 
-```bash
-$ chmod +x cmake-clean.sh
+### 1. Run with `qmake`
 
-$ ./cmake-clean.sh
-```
+- build
+
+    ```bash
+    # only run this once
+    $ chmod +x build.sh
+
+    $ ./build.sh
+    ```
+
+- run
+
+    ```bash
+    $ ./network-config-tool
+
+    # Qt 5.15.1
+    $ ./network-config-tool.app/Contents/MacOS/network-config-tool
+    ```
+
+- clean
+
+    ```bash
+    # only run this once
+    $ chmod +x clean.sh
+
+    $ ./clean.sh
+    ```
+
+### 3. Run with `cmake`
+
+- build
+
+    ```bash
+    # only run this once
+    $ chmod +x cmake-build.sh
+
+    $ ./cmake-build.sh
+    ```
+
+- run
+
+    ```bash
+    $ ./build/network-config-tool
+    ```
+
+- clean
+
+    ```bash
+    # only run this once
+    $ chmod +x cmake-clean.sh
+
+    $ ./cmake-clean.sh
+    ```
 
 ## Trobuleshooting
 
