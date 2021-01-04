@@ -16,3 +16,4 @@ build/
 obj/
 *.app
 Makefile
+network-config-tool
